@@ -1,0 +1,21 @@
+.login-form {
+	float: right;
+}
+
+.login-form > fieldset {
+	display: inline-block;
+}
+
+.sign-in-btn {
+	border: 1px, solid, black;
+	margin: 0.25em;
+}
+
+.sign-up {
+	border: 1px, solid, black;
+	padding: 0.5em;
+}
+
+.login-form-error {
+	
+}

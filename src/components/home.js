@@ -1,8 +1,8 @@
 import React from 'react';
-
+import './styles/home.css';
 function Home(props) {
 	return(
-		<section>
+		<section className="home">
 			<p>
 				This is the Home page
 			</p>

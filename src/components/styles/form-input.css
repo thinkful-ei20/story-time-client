@@ -1,0 +1,15 @@
+.login-form-input {
+	display:inline-block;
+	border: none;
+}
+
+.registration-form-input {
+	display:block;
+	border: none;
+}
+
+fieldset {
+	border:none;
+	margin:0.25em;
+	padding:0.25em;
+}

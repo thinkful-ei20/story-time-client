@@ -1,0 +1,15 @@
+header {
+	display: flex;
+	background-color:  lightblue;
+	align-items: center;
+}
+
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+h1 {
+	float: left;
+}
