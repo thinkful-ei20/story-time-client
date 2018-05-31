@@ -1,5 +1,4 @@
 export const normalizeResponseErrors = res => {
-	
 	if (!res.ok) {
 		if (
 			res.headers.has('content-type') &&

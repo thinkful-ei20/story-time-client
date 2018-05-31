@@ -12,7 +12,7 @@ import './styles/app.css';
 class App extends Component {
 	render() {
 		return (
-			<div className="App">
+			<div className="app">
 				<SiteHeader/>
 				<Route exact path="/" component={Home}/>
 				<Route exact path="/about" component={About}/>

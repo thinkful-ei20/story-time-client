@@ -28,7 +28,7 @@ class LoginForm extends Component {
 				{error}
 				<Field className="login-form-input" component={Input} type="text" name="username" id="username" placeholder="username" aria-label="username" validate={[required, nonEmpty]}/>
 				<Field className="login-form-input" component={Input} type="text" name="password" id="password" placeholder="password" aria-label="password" validate={[required, nonEmpty]}/>
-				<button className="sign-in-btn" disabled={this.props.pristine || this.props.submitting}>Log In</button>
+				<button className="login-in-btn" disabled={this.props.pristine || this.props.submitting}>Log In</button>
 				<Link className="sing-up" to="/register">Sign Up</Link>
 			</form>
 		);
@@ -37,5 +37,5 @@ class LoginForm extends Component {
 
 export default reduxForm({
 	form: 'login',
-	onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+	onSubmitFail: (errors, dispatch) => dispatch(focus('login', Object.keys(errors)[0]))
 })(LoginForm);

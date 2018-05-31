@@ -5,7 +5,7 @@ import {
 	AUTH_SUCCESS,
 	AUTH_ERROR,
 	SET_DIALOG
-} from '../actions/auth';
+} from '../actions/action-types';
 
 const initialState = {
 	authToken: null, // authToken !== null does not mean it has been validated

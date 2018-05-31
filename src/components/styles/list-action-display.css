@@ -1,0 +1,20 @@
+.action-display-main {
+	display: flex;
+	flex-wrap: wrap;
+	border: 1px solid black;
+}
+
+.action-display-header {
+	margin: 0.33em;
+	text-align: center;
+	width: 100%;
+}
+
+.action-display-panel {
+	display: flex;
+	justify-content: space-between;
+}
+
+.action-display-controller {
+	width:100%;
+}

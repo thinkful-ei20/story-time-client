@@ -3,36 +3,38 @@ import {SubmissionError} from 'redux-form';
 
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
+import {
+	SET_AUTH_TOKEN,
+	CLEAR_AUTH,
+	AUTH_REQUEST,
+	AUTH_SUCCESS,
+	AUTH_ERROR,
+	SET_DIALOG
+} from './action-types';
 
-export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
 	type: SET_AUTH_TOKEN,
 	authToken
 });
 
-export const CLEAR_AUTH = 'CLEAR_AUTH';
 export const clearAuth = () => ({
 	type: CLEAR_AUTH
 });
 
-export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const authRequest = () => ({
 	type: AUTH_REQUEST
 });
 
-export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const authSuccess = currentUser => ({
 	type: AUTH_SUCCESS,
 	currentUser
 });
 
-export const AUTH_ERROR = 'AUTH_ERROR';
 export const authError = error => ({
 	type: AUTH_ERROR,
 	error
 });
 
-export const SET_DIALOG = 'SET_DIALOG';
 export const setDialog = dialog => ({
 	type: SET_DIALOG,
 	dialog
@@ -48,7 +50,6 @@ const storeAuthInfo = (authToken, dispatch) => {
 
 export const login = (username, password) => dispatch => {
 	dispatch(authRequest());
-	console.log('hi!');
 	return (
 		fetch(`${API_BASE_URL}/auth/login`, {
 			method: 'POST',
@@ -62,19 +63,12 @@ export const login = (username, password) => dispatch => {
 		})
 	// Reject any requests which don't return a 200 status, creating
 	// errors which follow a consistent format
-			.then(res => {
-				return normalizeResponseErrors(res);
-			})
-			.then(res => {
-				return res.json()
-			})
+			.then(res => normalizeResponseErrors(res))
+			.then(res => res.json())
 			.then(({authToken}) => storeAuthInfo(authToken, dispatch))
 			.catch(err => {
 				const {code} = err;
-				const message =
-                    code === 401
-                    	? 'Incorrect username or password'
-                    	: 'Unable to login, please try again';
+				const message = code === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
 				dispatch(authError(err));
 				// Could not authenticate, so return a SubmissionError for Redux
 				// Form
@@ -106,6 +100,5 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 			// them and sign us out
 			dispatch(authError(err));
 			dispatch(clearAuth());
-			// clearAuthToken(authToken);
 		});
 };

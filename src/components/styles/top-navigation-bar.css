@@ -1,7 +1,8 @@
 .navlinks {
+	display: flex;
+	flex-wrap: wrap;
 	list-style: none;
-	float: left;
-	text-align: center;
+	justify-content: space-evenly;
 }
 
 .link {

@@ -1,15 +1,14 @@
 header {
 	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width:  100%;
 	background-color:  lightblue;
-	align-items: center;
-}
-
-header:after {
-	content: "";
-	display: table;
-	clear: both;
+	border: 1px solid grey;
+	margin-bottom: 0.5em;
 }
 
 h1 {
-	float: left;
+	margin: 0.66em;
+	justify-content: center;
 }

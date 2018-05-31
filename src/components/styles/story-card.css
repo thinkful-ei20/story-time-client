@@ -1,0 +1,28 @@
+.story-card {
+	background-color: darkgrey;
+	border: 1px solid black;
+	margin: 1.0em;
+}
+
+.story-title {
+	width: 20%;
+	height: 15%;
+	display: inline-block;
+	background-color: whitesmoke;
+	border: 1px solid black;
+	margin: 0.25em;
+}
+
+.author {
+	display: inline-block;
+	background-color: lightcoral;
+	border: 1px solid black;
+	margin: 0.25em;
+}
+
+.created-at {
+	display: inline-block;
+	background-color: whitesmoke;
+	border: 1px solid black;
+	margin: 0.25em;
+}

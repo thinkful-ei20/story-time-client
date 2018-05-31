@@ -11,6 +11,7 @@ import './styles/registration-form.css';
 const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 
+//if (!this.props.dispatch) return <h1>UNCONNECTED</h1>;
 
 export class RegistrationForm extends React.Component {
 	onSubmit(values) {
@@ -34,9 +35,7 @@ export class RegistrationForm extends React.Component {
 		return (
 			<form
 				className="registration-form"
-				onSubmit={this.props.handleSubmit(values =>
-					this.onSubmit(values)
-				)}>
+				onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				<label htmlFor="firstName">First name</label>
 				<Field component={Input} type="text" name="firstName" />
 				<label htmlFor="lastName">Last name</label>
@@ -74,6 +73,8 @@ export class RegistrationForm extends React.Component {
 
 export default reduxForm({
 	form: 'registration',
-	onSubmitFail: (errors, dispatch) =>
+	onSubmitFail: (errors, dispatch) => {
+		console.log(errors);
 		dispatch(focus('registration', Object.keys(errors)[0]))
+	}
 })(RegistrationForm);
