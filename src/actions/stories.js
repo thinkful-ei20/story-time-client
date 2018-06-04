@@ -8,9 +8,9 @@ import {
 	STORY_SUCCESS,
 	STORY_ERROR,
 	SET_STORY,
-	UPDATE_STORY,
 	EDIT_STORY,
-	ADD_STORY } from './action-types';
+	ADD_STORY,
+	SEARCH_STORY } from './action-types';
 
 
 export const fetchStoryRequest = () => ({
@@ -42,6 +42,11 @@ export const addStory = story => ({
 	story
 });
 
+export const searchStory = searchText => ({
+	type: SEARCH_STORY,
+	searchText
+});
+
 // Async Action to fetch all stories
 export const fetchStories = () => dispatch => {
 	dispatch(fetchStoryRequest());
@@ -56,7 +61,7 @@ export const fetchStories = () => dispatch => {
 export const submitStory = story => (dispatch, getState) => {
 	const authToken = getState().auth.authToken;
 	dispatch(fetchStoryRequest());
-	return fetch(`${API_BASE_URL}/api/stories`,{
+	return fetch(`${API_BASE_URL}/stories`,{
 		method: 'POST',
 		body: JSON.stringify(story),
 		headers: {
@@ -67,7 +72,7 @@ export const submitStory = story => (dispatch, getState) => {
 	})
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
-		.then(stories => dispatch(fetchStorySuccess(stories)))
+		.then(story => dispatch(addStory(story)))
 		.catch(err => {
 			const {code} = err;
 			const message = code === 401 ? 'Unauthorized, please login to submit this story' : 'Unable to Submit, please try again';

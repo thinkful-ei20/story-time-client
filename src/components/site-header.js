@@ -8,15 +8,17 @@ import './styles/site-header.css';
 
 class SiteHeader extends Component {
 	render() {
-		const UserNavComponent = this.props.loggedIn ? <Profile/> : <LoginForm/> ;
+		const HeaderComponent = this.props.loggedIn ? <Profile/> : <LoginForm/> ;
 		return(
 			<header>
 				<div className="left-header">
 					<h1>StoryTime</h1>
 				</div>
-				<div className="right-header">
+				<div className="middle-header">
 					<TopNavigationBar/>
-					{UserNavComponent}
+				</div>
+				<div className="right-header">
+					{HeaderComponent}
 				</div>
 			</header>
 		);

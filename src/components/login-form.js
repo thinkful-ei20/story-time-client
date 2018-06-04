@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import {Field, reduxForm, focus} from 'redux-form';
 
 import Input from './input';
@@ -27,7 +27,7 @@ class LoginForm extends Component {
 			<form className="login-form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				{error}
 				<Field className="login-form-input" component={Input} type="text" name="username" id="username" placeholder="username" aria-label="username" validate={[required, nonEmpty]}/>
-				<Field className="login-form-input" component={Input} type="text" name="password" id="password" placeholder="password" aria-label="password" validate={[required, nonEmpty]}/>
+				<Field className="login-form-input" component={Input} type="password" name="password" id="password" placeholder="password" aria-label="password" validate={[required, nonEmpty]}/>
 				<button className="login-in-btn" disabled={this.props.pristine || this.props.submitting}>Log In</button>
 				<Link className="sing-up" to="/register">Sign Up</Link>
 			</form>

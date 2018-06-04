@@ -14,22 +14,28 @@ const matchesPassword = matches('password');
 //if (!this.props.dispatch) return <h1>UNCONNECTED</h1>;
 
 export class RegistrationForm extends React.Component {
-	onSubmit(values) {
-		const {username, password, firstName, lastName} = values;
+
+	onSubmit({username, password, firstName, lastName}) {
+
 		const user = {username, password, firstName, lastName};
+
 		return this.props
 			.dispatch(registerUser(user))
 			.then(() => this.props.dispatch(login(username, password)));
 	}
 
 	render() {
+
 		let error;
+
 		if(this.props.error) {
+
 			error = (
 				<div className="registration-form-error" aria-live="polite">
 					{this.props.error}
 				</div>
 			);
+
 		}
 
 		return (
@@ -37,9 +43,17 @@ export class RegistrationForm extends React.Component {
 				className="registration-form"
 				onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				<label htmlFor="firstName">First name</label>
-				<Field component={Input} type="text" name="firstName" />
+				<Field 
+					component={Input}
+					type="text"
+					name="firstName"
+				/>
 				<label htmlFor="lastName">Last name</label>
-				<Field component={Input} type="text" name="lastName" />
+				<Field 
+					component={Input}
+					type="text"
+					name="lastName" 
+				/>
 				<label htmlFor="username">Username</label>
 				<Field
 					component={Input}
@@ -74,7 +88,6 @@ export class RegistrationForm extends React.Component {
 export default reduxForm({
 	form: 'registration',
 	onSubmitFail: (errors, dispatch) => {
-		console.log(errors);
-		dispatch(focus('registration', Object.keys(errors)[0]))
+		dispatch(focus('registration', Object.keys(errors)[0]));
 	}
 })(RegistrationForm);

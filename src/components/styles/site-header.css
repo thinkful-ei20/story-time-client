@@ -1,14 +1,48 @@
+header, .right-header, .middle-header {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.left-header {
+	/*add some colorful styles */
+}
+
+.middle-header {
+	justify-content: space-evenly;
+	margin: auto;
+}
+
 header {
-	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-around;
 	width:  100%;
 	background-color:  lightblue;
 	border: 1px solid grey;
 	margin-bottom: 0.5em;
 }
-
 h1 {
-	margin: 0.66em;
-	justify-content: center;
+	margin: 0.5em;
+}
+
+
+@media screen and (max-width: 600px) {
+	header {
+		justify-content: center;
+	}
+	.left-header, .right-header, .middle-header {
+		width:100%;
+	}
+	.left-header {
+		order: 1;
+		text-align: center;
+	}
+	.middle-header {
+		order: 2;
+	}
+	.right-header {
+		order: 3;
+	}
 }

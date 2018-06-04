@@ -1,28 +1,46 @@
 .story-card {
-	background-color: darkgrey;
-	border: 1px solid black;
-	margin: 1.0em;
-}
-
-.story-title {
-	width: 20%;
-	height: 15%;
-	display: inline-block;
 	background-color: whitesmoke;
 	border: 1px solid black;
+	margin: 1.0em;
+	padding: 0.33em;
+}
+
+.info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+
+.title-author {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+}
+
+.title {
+	order: 1;
+	display: inline-block;
+	border: 1px solid black;
+	padding: 0.165em;
 	margin: 0.25em;
 }
 
 .author {
+	order:2;
 	display: inline-block;
 	background-color: lightcoral;
 	border: 1px solid black;
+	padding: 0.165em;
 	margin: 0.25em;
 }
 
-.created-at {
-	display: inline-block;
+.date {
+	display: inline;
 	background-color: whitesmoke;
 	border: 1px solid black;
+	padding: 0.165em;
 	margin: 0.25em;
+	align-self: flex-start;
 }
+

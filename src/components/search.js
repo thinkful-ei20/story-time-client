@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import Input from './input';
+import { searchStory } from '../actions/stories';
 
-import './styles/search.css'
+import './styles/search-bar.css';
 
 class Search extends Component {
 
-	onChange(e) {
-		return this.props.dispatch(searchStory(e.target.value));
+	onSubmit(value) {
+		return this.props.dispatch(searchStory(value));
 	}
 
 	render() {
 		return(
 			<form onSubmit={this.props.handleSubmit(value => this.onSubmit(value))}>
-				<label htmlFor="searchText">Search</label>
-				<input type="text" name="serchText" id="searchText" placeholder="Search..." onChange={e => this.onChange(e)} value={this.props.searchText}/>
+				<div className="search-bar">
+					<Field type="search" name="searchText" id="searchtext" component={Input} palceholder="Search for Stories" autocomplete="off"/>
+					<button type="submit" title="Submit your search query">Search</button>
+				</div>
 			</form>
 		);
 	}
@@ -23,9 +28,9 @@ const mapStateToProps = state => ({
 	searchText: state.story.searchText
 });
 
+//From reduxForm documentation https://redux-form.com/7.3.0/docs/faq/howtoconnect.md/
+Search = connect(mapStateToProps)(Search);
+
 export default reduxForm({
-	form: 'search',
-	onSubmitFail: (errors, dispatch) => {
-		dispatch(focus('search', 'searchText'));
-	}
+	form: 'search-text'
 })(Search);

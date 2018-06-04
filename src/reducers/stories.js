@@ -12,9 +12,11 @@ import {
 const initialState = {
 	stories: [],
 	story: {},
+	filters:{},
 	loading: false,
 	error: null,
 	dialog: false,
+	isReading: false,
 	isEditing: false,
 	isSubmitting: false,
 	searchText: '',
