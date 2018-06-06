@@ -11,7 +11,6 @@ class ActionBar extends Component {
 
 	renderSubmitButton() {
 		return <Link to="/submit">Submit A Work!</Link>;
-		//return <button className="add-story">Submit A Work</button>;
 	}
 
 	render() {

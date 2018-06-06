@@ -18,7 +18,7 @@
 	flex-direction: column;
 }
 
-.title {
+.card-title {
 	order: 1;
 	display: inline-block;
 	border: 1px solid black;
@@ -26,7 +26,7 @@
 	margin: 0.25em;
 }
 
-.author {
+.card-author {
 	order:2;
 	display: inline-block;
 	background-color: lightcoral;
@@ -36,11 +36,17 @@
 }
 
 .date {
-	display: inline;
-	background-color: whitesmoke;
-	border: 1px solid black;
-	padding: 0.165em;
-	margin: 0.25em;
 	align-self: flex-start;
+	background-color: whitesmoke;
+	display: flex;
+	font-size: 0.83em;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.card-created, .card-updated {
+	padding: 0.165em;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
 }
 

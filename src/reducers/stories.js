@@ -1,12 +1,15 @@
 
 import {
 	STORY_REQUEST,
+	STORIES_SUCCESS,
 	STORY_SUCCESS,
 	STORY_ERROR,
 	SET_STORY,
 	ADD_STORY,
+	UPDATE_STORY,
 	EDIT_STORY,
-	SEARCH_STORY
+	SEARCH_STORY,
+	READ_STORY
 } from '../actions/action-types';
 
 const initialState = {
@@ -16,9 +19,8 @@ const initialState = {
 	loading: false,
 	error: null,
 	dialog: false,
-	isReading: false,
-	isEditing: false,
-	isSubmitting: false,
+	editing: false,
+	reading: false,
 	searchText: '',
 };
 
@@ -27,15 +29,23 @@ export default function reducer (state=initialState, action) {
 	if(action.type === STORY_REQUEST){
 		return {
 			...state,
-			loading: true
+			loading: action.loading
+		};
+	}
+
+	if(action.type === STORIES_SUCCESS){
+		return {
+			...state,
+			stories: action.stories,
+			loading: action.loading
 		};
 	}
 
 	if(action.type === STORY_SUCCESS){
 		return {
 			...state,
-			stories: action.stories,
-			loading: false
+			story: action.story,
+			loading: action.loading
 		};
 	}
 
@@ -43,7 +53,7 @@ export default function reducer (state=initialState, action) {
 		return {
 			...state,
 			story: {},
-			loading: false,
+			loading: action.loading,
 			error: action.error
 		};
 	}
@@ -51,7 +61,7 @@ export default function reducer (state=initialState, action) {
 	if(action.type === SET_STORY){
 		return {
 			...state,
-			story: action.story
+			story: action.storyId !== null ? state.stories.find(story => story.id === action.storyId) : {}
 		};
 	}
 
@@ -61,14 +71,35 @@ export default function reducer (state=initialState, action) {
 			stories: [
 				...state.stories,
 				action.story
-			]
+			],
+			story: action.story,
+		};
+	}
+
+	if(action.type === UPDATE_STORY){
+		return {
+			...state,
+			stories: state.stories.map(story => {
+				if(story.id === action.story.id) {
+					return action.story
+				}
+				return story
+			}),
+			story: action.story,
+		}
+	}
+
+	if(action.type === READ_STORY) {
+		return {
+			...state,
+			reading: action.reading,
 		};
 	}
 
 	if(action.type === EDIT_STORY){
 		return {
 			...state,
-			isEditing: true
+			editing: true
 		};
 	}
 

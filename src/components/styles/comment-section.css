@@ -1,0 +1,14 @@
+.comment-list {
+	list-style: none;
+	background-color: lightgrey;
+	border: 1px solid gray;
+	overflow: auto;
+	margin: 1.0em;
+	margin-top:0;
+	padding:0;
+}
+
+h5 {
+	text-align: center;
+	margin: 0 auto;
+}

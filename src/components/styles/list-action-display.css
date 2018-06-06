@@ -1,7 +1,7 @@
 .action-display-main {
 	display: flex;
 	flex-wrap: wrap;
-	border: 1px solid black;
+	margin: 0 auto;
 }
 
 .action-display-header {

@@ -4,7 +4,7 @@ import './styles/about.css';
 function About(props) {
 	return(
 		<section className="about">
-			<h3>Welcome to Story Time</h3>
+			<h3 className="about-header">Welcome to Story Time</h3>
 			<div>
 				<p>
 					Story time is a platform for writers who want to expand their skill set,
@@ -15,7 +15,7 @@ function About(props) {
 					As a visitor of our site, we want to provide the best possible user experience for you. That being said,
 					there are a couple of rules to abide by when engaging with the community.
 				</p>
-				<ul>
+				<ul className="about-list">
 					<li>1. Be respectful</li>
 					<li>2. Be willing to give and recieve constructive feedback</li>
 					<li>3. Do not copy and or claim any original works as your own</li>

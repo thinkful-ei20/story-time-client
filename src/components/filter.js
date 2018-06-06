@@ -32,7 +32,7 @@ class Filter extends Component {
 }
 
 const mapStateToProps = state => ({
-	filter: state.story.filter
+	filter: state.view.filters
 });
 
 Filter = connect(mapStateToProps)(Filter);

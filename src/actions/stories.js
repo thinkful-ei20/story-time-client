@@ -5,37 +5,53 @@ import {normalizeResponseErrors} from './utils';
 
 import {
 	STORY_REQUEST,
+	STORIES_SUCCESS,
 	STORY_SUCCESS,
 	STORY_ERROR,
 	SET_STORY,
+	READ_STORY,
 	EDIT_STORY,
 	ADD_STORY,
-	SEARCH_STORY } from './action-types';
+	UPDATE_STORY,
+	SEARCH_STORY,} from './action-types';
 
 
 export const fetchStoryRequest = () => ({
-	type: STORY_REQUEST
+	type: STORY_REQUEST,
+	loading: true
 });
 
-export const fetchStorySuccess = stories => ({
+export const fetchStoriesSuccess = stories => ({
+	type: STORIES_SUCCESS,
+	stories,
+	loading: false
+});
+
+export const fetchStorySuccess = story => ({
 	type: STORY_SUCCESS,
-	stories
+	story,
+	loading: false
 });
 
 export const fetchStoryError = error => ({
 	type: STORY_ERROR,
-	error
+	error,
+	loading: false
 });
 
-export const setStory = story => ({
+export const setStory = storyId => ({
 	type: SET_STORY,
-	story
+	storyId
 });
 
 export const editStory = () => ({
-	type: EDIT_STORY
+	type: EDIT_STORY,
 });
 
+export const updateStory = story => ({
+	type: UPDATE_STORY,
+	story
+});
 
 export const addStory = story => ({
 	type: ADD_STORY,
@@ -50,18 +66,36 @@ export const searchStory = searchText => ({
 // Async Action to fetch all stories
 export const fetchStories = () => dispatch => {
 	dispatch(fetchStoryRequest());
-	return fetch(`${API_BASE_URL}/stories`)
+	return ( fetch(`${API_BASE_URL}/stories`)
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
-		.then(stories => dispatch(fetchStorySuccess(stories)))
-		.catch(err => dispatch(fetchStoryError(err)));
+		.then(stories => dispatch(fetchStoriesSuccess(stories)))
+		.catch(err => dispatch(fetchStoryError(err)))
+	);
 };
 
-// Async Action to submit a single story
-export const submitStory = story => (dispatch, getState) => {
+// Async Action to fetch one story
+export const fetchStory = id => dispatch => {
+	dispatch(fetchStoryRequest());
+	return ( fetch(`${API_BASE_URL}/stories/${id}`)
+		.then(res => normalizeResponseErrors(res))
+		.then(res => {
+			console.log('FETCH_STORY_1',res);
+			return res.json();
+		})
+		.then(story => {
+			console.log('FETCH_STORY_2',story);
+			return dispatch(fetchStorySuccess(story))
+		})
+		.catch(err => dispatch(fetchStoryError(err)))
+	);
+};
+
+// Async Action to submit one story
+export const submitNewStory = story => (dispatch, getState) => {
 	const authToken = getState().auth.authToken;
 	dispatch(fetchStoryRequest());
-	return fetch(`${API_BASE_URL}/stories`,{
+	return ( fetch(`${API_BASE_URL}/stories`,{
 		method: 'POST',
 		body: JSON.stringify(story),
 		headers: {
@@ -72,7 +106,7 @@ export const submitStory = story => (dispatch, getState) => {
 	})
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
-		.then(story => dispatch(addStory(story)))
+		.then(res => dispatch(fetchStorySuccess(res)))
 		.catch(err => {
 			const {code} = err;
 			const message = code === 401 ? 'Unauthorized, please login to submit this story' : 'Unable to Submit, please try again';
@@ -82,14 +116,15 @@ export const submitStory = story => (dispatch, getState) => {
 					_error: message
 				})
 			);
-		});
+		})
+	);
 };
 
-// Async Action to update a single story
-export const updateStory = story => (dispatch, getState) => {
+// Async Action to edit a single story
+export const submitEditedStory = story => (dispatch, getState) => {
 	const authToken = getState().auth.authToken;
 	dispatch(fetchStoryRequest());
-	return fetch(`${API_BASE_URL}/api/stories/${story.id}`,{
+	return ( fetch(`${API_BASE_URL}/stories/${story.id}`,{
 		method: 'PUT',
 		body: JSON.stringify(story),
 		headers: {
@@ -100,7 +135,7 @@ export const updateStory = story => (dispatch, getState) => {
 	})
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
-		.then(stories => dispatch(fetchStorySuccess(stories)))
+		.then(res => dispatch(fetchStorySuccess(res)))
 		.catch(err => {
 			const {code} = err;
 			const message = code === 401 ? 'Unauthorized, please login to submit this story' : 'Unable to Submit, please try again';
@@ -110,5 +145,6 @@ export const updateStory = story => (dispatch, getState) => {
 					_error: message
 				})
 			);
-		});
+		})
+	);
 };

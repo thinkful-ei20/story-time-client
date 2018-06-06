@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import ActionBar from './action-bar';
-import ControlPanel from './control-panel';
 import StoryList from './story-list';
 
-import './styles/list-action-display.css';
-
 class ListActionDisplay extends Component {
+
 	render() {
 		return(
 			<div className="action-display-main">
@@ -15,7 +13,6 @@ class ListActionDisplay extends Component {
 				</h2>
 				<ActionBar/>
 				<div className="action-display-controller">
-					{/* <ControlPanel/> */}
 					<StoryList/>
 				</div>
 			</div>

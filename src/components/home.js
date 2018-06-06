@@ -1,23 +1,25 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-import { fetchStories } from '../actions/stories';
-
-import ListActionDisplay from './list-action-display';
+import ErrorMessage from './error-message';
+import MainDisplay from './main-display';
+import {fetchStories} from '../actions/stories';
 
 import './styles/main.css';
 
 class Home extends Component {
-	componentDidMount() {
-		this.props.dispatch(fetchStories());
-	}
 	render() {
+		const component = !this.props.error ? <MainDisplay/> : <ErrorMessage error={this.props.error}/>;
 		return(
 			<main className="main">
-				<ListActionDisplay/>
+				{component}
 			</main>
 		);
 	}
 }
 
-export default connect()(Home);
+const mapStateToProps = state => ({
+	error: state.view.error
+});
+
+export default connect(mapStateToProps)(Home);

@@ -25,7 +25,7 @@ class Search extends Component {
 }
 
 const mapStateToProps = state => ({
-	searchText: state.story.searchText
+	searchText: state.view.searchText
 });
 
 //From reduxForm documentation https://redux-form.com/7.3.0/docs/faq/howtoconnect.md/

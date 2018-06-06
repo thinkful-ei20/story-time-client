@@ -1,23 +1,39 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {reduxForm,Field,focus} from 'redux-form';
+import {withRouter} from 'react-router-dom';
 
-import {submitStory} from '../actions/stories';
+import {submitNewStory, submitEditedStory} from '../actions/stories';
+import {required, nonEmpty} from '../validators';
 
 import './styles/submit-work-form.css';
 
 class SubmitWorkForm extends Component {
+
 	onSubmit(values) {
-		const {title, genre, storyText} = values;
-		const story = {
-			title,
-			genre,
-			text: storyText['text']
-		};
-		console.log(story);
-		return this.props
-			.dispatch(submitStory(story));
+		//genres not implemented on the back end yet.
+		const {title, text} = values;
+		
+		if(this.props.editing) {
+			const storyObj = {
+				id : this.props.initialValues.id,
+				title,
+				text
+			};
+			this.props.dispatch(submitEditedStory(storyObj))
+				.then( res => {
+					const {id} = res.story
+					return this.props.history.push(`/${id}`)});
+
+		} else {
+			const storyObj = {title,text};
+			this.props.dispatch(submitNewStory(storyObj))
+				.then(res => {
+					const {id} = res.story
+					this.props.history.push(`/${id}`)});
+		}
 	}
+
 	render() {
 		return(
 			<form
@@ -25,12 +41,24 @@ class SubmitWorkForm extends Component {
 				onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				<fieldset className="title-fldst">
 					<label htmlFor="title">title</label>
-					<Field component="input" type="text" id="title" name="title"/>
+					<Field 
+						component="input"
+						type="text"
+						id="title"
+						placeholder="Title Goes Here!"
+						name="title"
+						validate={[required, nonEmpty]}
+					/>
 				</fieldset>
 				<fieldset className="genre-fldst">
 					<label htmlFor="genre">genre</label>
-					<Field name="genre" id="genre" component="select">
-						<option></option>
+					<Field 
+						name="genre"
+						id="genre" 
+						component="select" 
+						validate={[required, nonEmpty]}
+					>
+						<option>SELECT YOUR GENRE</option>
 						<option value="horror">horror</option>
 						<option value="comedy">comedy</option>
 						<option value="sci-fi">sci-fi</option>
@@ -41,10 +69,11 @@ class SubmitWorkForm extends Component {
 				<fieldset className="text-fldst">
 					<label htmlFor="storytext">text</label>
 					<Field
-						placeholder="Your Story begins here"
+						placeholder='Story Goes Here!'
 						component="textarea"
-						name="story[text]"
-						id="storytext"
+						validate={[required, nonEmpty]}
+						name="text"
+						id="text"
 						autoComplete="off"
 						autoCorrect="off"
 						autoCapitalize="off"
@@ -56,21 +85,20 @@ class SubmitWorkForm extends Component {
 						aria-haspopup="true"
 					/>
 				</fieldset>
-				<button className="submit-btn" type="submit">Submit Story</button>
+				<button className="submit-btn" type="submit" disabled={this.props.pristine || this.props.submitting}>Submit Story</button>
 			</form>
 		);
 	}
 }
 
-const mapStateToProps = state => ({
-	currentUser: state.auth.currentUser
-});
-
-SubmitWorkForm = connect(mapStateToProps)(SubmitWorkForm);
-
-export default reduxForm({
-	form:'submitwork',
-	onSubmitFail: (errors, dispatch) => {
-		dispatch(focus('registration', Object.keys(errors)[0]));
-	}
+SubmitWorkForm = reduxForm({
+	form:'submitwork'
 })(SubmitWorkForm);
+
+SubmitWorkForm = connect(state => ({
+	currentUser: state.auth.currentUser,
+	editing: state.view.editing,
+	initialValues: state.view.story ? state.view.story : {title:'', text: '', genre:''},
+}))(SubmitWorkForm);
+
+export default withRouter(SubmitWorkForm);
