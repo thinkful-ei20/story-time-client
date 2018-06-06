@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Route, withRouter, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {Route,withRouter,Switch} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import SiteHeader from './site-header';
 import Home from './home';
@@ -11,11 +11,9 @@ import SubmitWorkForm from './submit-work-form';
 import DoesNotExist from './does-not-exist';
 import AuthRoute from './auth-route';
 
-import {fetchStories} from '../actions/stories';
-
 import './styles/app.css';
 
-class App extends Component {
+export class App extends Component {
 	render() {
 		return (
 			<div className="app">
