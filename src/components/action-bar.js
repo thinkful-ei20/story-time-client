@@ -7,7 +7,7 @@ import Filter from './filter';
 
 import './styles/action-bar.css';
 
-class ActionBar extends Component {
+export class ActionBar extends Component {
 
 	renderSubmitButton() {
 		return <Link to="/submit">Submit A Work!</Link>;

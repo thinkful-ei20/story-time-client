@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles/error-message.css';
 
-export default function ErroMessage(props) {
+export function ErroMessage(props) {
 	console.log(props.error);
 	return(
 		<div className="error-message">
@@ -18,4 +18,6 @@ export default function ErroMessage(props) {
 		</div>
 	);
 }
+
+export default ErroMessage;
 

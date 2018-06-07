@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/about.css';
 
-function About(props) {
+export function About(props) {
 	return(
 		<section className="about">
 			<h3 className="about-header">Welcome to Story Time</h3>

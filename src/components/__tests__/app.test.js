@@ -41,7 +41,5 @@ describe('<App />', () => {
 	// 	/**After all this, we want to make our assertions */
 	// 	const newItems = [...items, toAdd];
 	// 	//expect(wrapper.state('items').toEqual(newItems));
-
-
 	// });
 });

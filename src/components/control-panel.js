@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './styles/control-panel.css';
 
-class ControlPanel extends Component {
+export class ControlPanel extends Component {
 	render() {
 		return(
 			<div className="panel-container">

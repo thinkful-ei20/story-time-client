@@ -1,52 +1,55 @@
 header, .right-header, .left-header, .middle-header {
-	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-	display: -ms-flexbox;      /* TWEENER - IE 10 */
-	display: -webkit-flex;     /* NEW - Chrome */
-	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-	margin: auto;
-}
-
-.right-header {
-
-}
-
-.left-header {
-	/*add some colorful styles */
-}
-
-.middle-header {
-	justify-content: space-evenly;
+	display: flex;
 }
 
 header {
-	flex-wrap: wrap;
+	flex-direction: column;
 	justify-content: space-around;
-	width:  100%;
-	background-color:  lightblue;
-	border: 1px solid grey;
+	background-color:  whitesmoke;
+	border: 1px solid #41b3a3;
+	border-radius: 3px;
 	margin-bottom: 0.5em;
+	margin: auto;
 }
+
+.left-header {
+	flex-direction: column;
+	order: 1;
+}
+
+.left-header-left {
+	order: 1;
+}
+
 h1 {
-	margin: 0.5em;
+	text-align: center;
+	margin: 0.25em auto;
 }
 
 
-@media screen and (max-width: 600px) {
+.left-header-right {
+	text-align: center;
+	margin: 0.25em auto;
+	order: 2;
+}
+
+.right-header {
+	margin: 0.25em 0;
+	order: 2;
+	justify-content: center;
+}
+
+
+@media screen and (min-width: 600px) {
 	header {
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+
+	.left-header {
 		justify-content: center;
 	}
-	.left-header, .right-header, .middle-header {
-		width:100%;
-	}
-	.left-header {
-		order: 1;
-		text-align: center;
-	}
-	.middle-header {
-		order: 2;
-	}
-	.right-header {
-		order: 3;
-	}
 }
+
+
+

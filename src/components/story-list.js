@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 import StoryCard from './story-card';
 import {fetchStories} from '../actions/stories';
@@ -7,7 +7,7 @@ import {fetchStories} from '../actions/stories';
 import './styles/story-list.css';
 
 
-class StoryList extends Component {
+export class StoryList extends Component {
 
 	constructor(props) {
 		super(props);
@@ -15,13 +15,13 @@ class StoryList extends Component {
 	}
 
 	render() {
-		if(this.props.loading) {
+		if(this.props.isLoading) {
 			return(
 				<h2>Loading...</h2>
-			)
+			);
 		}
 		const stories = this.props.stories.map((story, i) => {
-			return <StoryCard key={i} {...story}/>;
+			return <StoryCard key={i} story={story}/>;
 		});
 
 		return (
@@ -33,8 +33,8 @@ class StoryList extends Component {
 }
 
 const mapStateToProps = state => ({
-	stories: state.view.stories,
-	loading: state.view.loading
+	isLoading: state.view.loading,
+	stories: state.view.stories
 });
 
 export default connect(mapStateToProps)(StoryList);

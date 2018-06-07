@@ -2,14 +2,13 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import ErrorMessage from './error-message';
-import MainDisplay from './main-display';
-import {fetchStories} from '../actions/stories';
+import ListActionDisplay from './list-action-display';
 
-import './styles/main.css';
+import './styles/home.css';
 
-class Home extends Component {
+export class Home extends Component {
 	render() {
-		const component = !this.props.error ? <MainDisplay/> : <ErrorMessage error={this.props.error}/>;
+		const component = !this.props.error ? <ListActionDisplay/> : <ErrorMessage error={this.props.error}/>;
 		return(
 			<main className="main">
 				{component}

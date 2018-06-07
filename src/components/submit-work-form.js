@@ -3,17 +3,17 @@ import {connect} from 'react-redux';
 import {reduxForm,Field,focus} from 'redux-form';
 import {withRouter} from 'react-router-dom';
 
-import {submitNewStory, submitEditedStory} from '../actions/stories';
+import {submitNewStory, submitEditedStory, setStory} from '../actions/stories';
 import {required, nonEmpty} from '../validators';
 
 import './styles/submit-work-form.css';
 
-class SubmitWorkForm extends Component {
+export class SubmitWorkForm extends Component {
 
 	onSubmit(values) {
 		//genres not implemented on the back end yet.
 		const {title, text} = values;
-		
+
 		if(this.props.editing) {
 			const storyObj = {
 				id : this.props.initialValues.id,
@@ -22,15 +22,21 @@ class SubmitWorkForm extends Component {
 			};
 			this.props.dispatch(submitEditedStory(storyObj))
 				.then( res => {
-					const {id} = res.story
-					return this.props.history.push(`/${id}`)});
+					const story = res.story;
+					const updatedStory = Object.assign({},story,{'username':this.props.currentUser.username});
+					this.props.dispatch(setStory(updatedStory));
+					this.props.history.push(`/${story.id}`);
+				});
 
 		} else {
 			const storyObj = {title,text};
 			this.props.dispatch(submitNewStory(storyObj))
 				.then(res => {
-					const {id} = res.story
-					this.props.history.push(`/${id}`)});
+					const story = res.story;
+					const updatedStory = Object.assign({},story,{'username':this.props.currentUser.username});
+					this.props.dispatch(setStory(updatedStory));
+					this.props.history.push(`/${story.id}`);
+				});
 		}
 	}
 

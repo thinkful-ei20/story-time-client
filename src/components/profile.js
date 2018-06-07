@@ -6,13 +6,13 @@ import {clearAuth} from '../actions/auth';
 
 import './styles/profile.css';
 
-class Profile extends Component{
+export class Profile extends Component{
 	render() {
-		const user = this.props.currentUser;
+		const user = this.props.currentUser ? this.props.currentUser : 'Loading...';
 		return(
 			<div className="profile">
-				{user.username}
-				<Link to="/" role="button" onClick={() => this.props.dispatch(clearAuth())}>Logout</Link>
+				<p className="profile-name">username: {user.username}</p>
+				<Link to="/" className="logout" role="button" onClick={() => this.props.dispatch(clearAuth())}>Logout</Link>
 			</div>
 		);
 	}

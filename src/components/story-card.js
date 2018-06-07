@@ -6,26 +6,25 @@ import {setStory} from '../actions/stories';
 
 import './styles/story-card.css';
 
-class StoryCard extends Component {
+export class StoryCard extends Component {
 
-	onClick(storyId) {
-		console.log(storyId);
-		this.props.dispatch(setStory(storyId));
-		this.props.history.push(`/${storyId}`);
+	onClick(story) {
+		this.props.dispatch(setStory(story));
+		this.props.history.push(`/${story.id}`);
 	}
 
 	render() {
 
-		const {title, username, created_at, updated_at, id} = this.props;
-		const date_updated = new Date(updated_at).toDateString();
-		const date_created = new Date(created_at).toDateString();
+		const {story} = this.props;
+		const date_updated = new Date(story.updated_at).toDateString();
+		const date_created = new Date(story.created_at).toDateString();
 
 		return(
-			<li className="story-card" onClick={() => this.onClick(id) }>
+			<li className="story-card" onClick={() => this.onClick(story) }>
 				<div className="info">
 					<div className="title-author">
-						<h3 className="card-title">{title}</h3>
-						<h4 className="card-author">{username}</h4>
+						<h3 className="card-title">{story.title}</h3>
+						<h4 className="card-author">{story.username}</h4>
 					</div>
 					<div className="date">
 						<h5 className="card-created">{`written: ${date_created}`}</h5>

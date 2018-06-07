@@ -7,6 +7,7 @@
 	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
 	flex-wrap: wrap;
+	flex-direction: column;
 }
 
 .login-form > fieldset {
@@ -18,7 +19,7 @@
 	margin: 0.25em;
 }
 
-.sign-up {
+a {
 	border: 1px, solid, black;
 	padding: 0.5em;
 }

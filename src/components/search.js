@@ -6,7 +6,7 @@ import { searchStory } from '../actions/stories';
 
 import './styles/search-bar.css';
 
-class Search extends Component {
+export class Search extends Component {
 
 	onSubmit(value) {
 		return this.props.dispatch(searchStory(value));

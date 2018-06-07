@@ -9,7 +9,6 @@ import {
 	STORY_SUCCESS,
 	STORY_ERROR,
 	SET_STORY,
-	READ_STORY,
 	EDIT_STORY,
 	ADD_STORY,
 	UPDATE_STORY,
@@ -39,9 +38,9 @@ export const fetchStoryError = error => ({
 	loading: false
 });
 
-export const setStory = storyId => ({
+export const setStory = story => ({
 	type: SET_STORY,
-	storyId
+	story
 });
 
 export const editStory = () => ({
@@ -80,12 +79,10 @@ export const fetchStory = id => dispatch => {
 	return ( fetch(`${API_BASE_URL}/stories/${id}`)
 		.then(res => normalizeResponseErrors(res))
 		.then(res => {
-			console.log('FETCH_STORY_1',res);
 			return res.json();
 		})
 		.then(story => {
-			console.log('FETCH_STORY_2',story);
-			return dispatch(fetchStorySuccess(story))
+			return dispatch(fetchStorySuccess(story));
 		})
 		.catch(err => dispatch(fetchStoryError(err)))
 	);

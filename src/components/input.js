@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles/form-input.css';
 
-export default class Input extends React.Component {
+export class Input extends React.Component {
 	componentDidUpdate(prevProps) {
 		if (!prevProps.meta.active && this.props.meta.active) {
 			this.input.focus();
@@ -45,3 +45,5 @@ export default class Input extends React.Component {
 		);
 	}
 }
+
+export default Input;

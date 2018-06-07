@@ -5,7 +5,7 @@ import CommentCard from './comment-card';
 
 import './styles/comment-section.css';
 
-class CommentSection extends Component {
+export class CommentSection extends Component {
 	render() {
 		const comments = [<CommentCard key={123123}/>];
 		return(

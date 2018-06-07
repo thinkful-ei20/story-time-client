@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
-import CommentSection from './comment-section';
-import {fetchStory, setStory, editStory} from '../actions/stories';
+//import CommentSection from './comment-section';
+import {fetchStory, editStory} from '../actions/stories';
 
 import './styles/story-view.css';
 
 class StoryView extends Component {
 
 	componentDidMount() {
-		if(!this.props.story) {
+		if(JSON.stringify(this.props.story) === '{}') {
 			this.props.dispatch(fetchStory(this.props.match.params.id));
 		}
 	}
@@ -22,12 +22,12 @@ class StoryView extends Component {
 
 	render() {
 
-		if(this.props.loading) {
+		if(this.props.isLoading) {
 			return (
 				<div className="story-view-container">
 					<h2>Loading...</h2>
 				</div>
-			)
+			);
 		}
 
 		const edit = this.props.isOwner ? <button className="edit-btn" onClick={() => this.onClickEdit()}>Edit</button> : undefined;
@@ -45,7 +45,7 @@ class StoryView extends Component {
 					<div className="story-text">
 						<p>{this.props.story.text}</p>
 					</div>
-					<CommentSection/>
+					{/*<CommentSection/>*/}
 				</div>
 			</div>
 		);
@@ -53,10 +53,10 @@ class StoryView extends Component {
 }
 
 const mapStateToProps = state => ({
-	loggedIn: state.auth.currentUser !== null,
+	isloggedIn: state.auth.currentUser !== null,
 	isOwner: state.auth.currentUser !== null && state.auth.currentUser.username === state.view.story.username,
-	loading: state.view.loading,
-	story: JSON.stringify(state.view.story) !== '{}' ? state.view.story :  undefined
+	isLoading: state.view.loading,
+	story: state.view.story,
 });
 
 export default withRouter(connect(mapStateToProps)(StoryView));

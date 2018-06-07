@@ -15,18 +15,18 @@ import {
 const initialState = {
 	stories: [],
 	story: {},
-	filters:{},
 	loading: false,
 	error: null,
 	dialog: false,
 	editing: false,
-	reading: false,
-	searchText: '',
+	//searchText: '',
+	//filters:{},
 };
 
 export default function reducer (state=initialState, action) {
 
 	if(action.type === STORY_REQUEST){
+		console.log('loading',action.loading);
 		return {
 			...state,
 			loading: action.loading
@@ -34,6 +34,7 @@ export default function reducer (state=initialState, action) {
 	}
 
 	if(action.type === STORIES_SUCCESS){
+		console.log('loading',action.loading);
 		return {
 			...state,
 			stories: action.stories,
@@ -42,6 +43,7 @@ export default function reducer (state=initialState, action) {
 	}
 
 	if(action.type === STORY_SUCCESS){
+		console.log('loading',action.loading);
 		return {
 			...state,
 			story: action.story,
@@ -61,7 +63,7 @@ export default function reducer (state=initialState, action) {
 	if(action.type === SET_STORY){
 		return {
 			...state,
-			story: action.storyId !== null ? state.stories.find(story => story.id === action.storyId) : {}
+			story: action.story
 		};
 	}
 
@@ -81,9 +83,9 @@ export default function reducer (state=initialState, action) {
 			...state,
 			stories: state.stories.map(story => {
 				if(story.id === action.story.id) {
-					return action.story
+					return action.story;
 				}
-				return story
+				return story;
 			}),
 			story: action.story,
 		}

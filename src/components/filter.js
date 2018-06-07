@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-import Input from './input';
+//import Input from './input';
 
 import './styles/control-panel.css';
 
-class Filter extends Component {
+export class Filter extends Component {
 
 	onSubmit(value) {
 		console.log(value);
