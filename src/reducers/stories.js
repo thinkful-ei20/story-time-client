@@ -26,7 +26,6 @@ const initialState = {
 export default function reducer (state=initialState, action) {
 
 	if(action.type === STORY_REQUEST){
-		console.log('loading',action.loading);
 		return {
 			...state,
 			loading: action.loading
@@ -34,20 +33,20 @@ export default function reducer (state=initialState, action) {
 	}
 
 	if(action.type === STORIES_SUCCESS){
-		console.log('loading',action.loading);
 		return {
 			...state,
 			stories: action.stories,
-			loading: action.loading
+			loading: action.loading,
+			error: null
 		};
 	}
 
 	if(action.type === STORY_SUCCESS){
-		console.log('loading',action.loading);
 		return {
 			...state,
 			story: action.story,
-			loading: action.loading
+			loading: action.loading,
+			error: null
 		};
 	}
 
@@ -88,20 +87,13 @@ export default function reducer (state=initialState, action) {
 				return story;
 			}),
 			story: action.story,
-		}
-	}
-
-	if(action.type === READ_STORY) {
-		return {
-			...state,
-			reading: action.reading,
 		};
 	}
 
 	if(action.type === EDIT_STORY){
 		return {
 			...state,
-			editing: true
+			editing: action.editing
 		};
 	}
 

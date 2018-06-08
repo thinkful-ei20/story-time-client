@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthRoute from '../auth-route';
+import {AuthRoute} from '../auth-route';
 import {shallow} from 'enzyme';
 
 describe('<AuthRoute />', () => {

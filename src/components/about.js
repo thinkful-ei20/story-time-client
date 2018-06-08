@@ -19,7 +19,6 @@ export function About(props) {
 					<li>1. Be respectful</li>
 					<li>2. Be willing to give and recieve constructive feedback</li>
 					<li>3. Do not copy and or claim any original works as your own</li>
-					<li>4. Blah, Blah, Blah...</li>
 				</ul>
 				<p>So, Are you ready?</p>
 			</div>

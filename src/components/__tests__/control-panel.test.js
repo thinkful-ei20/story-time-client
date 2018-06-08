@@ -1,5 +1,5 @@
 import React from 'react';
-import ControlPanel from '../control-panel';
+import {ControlPanel} from '../control-panel';
 import {shallow} from 'enzyme';
 
 describe('<ControlPanel />', () => {

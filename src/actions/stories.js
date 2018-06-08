@@ -43,8 +43,9 @@ export const setStory = story => ({
 	story
 });
 
-export const editStory = () => ({
+export const editStory = editing => ({
 	type: EDIT_STORY,
+	editing
 });
 
 export const updateStory = story => ({
@@ -90,8 +91,8 @@ export const fetchStory = id => dispatch => {
 
 // Async Action to submit one story
 export const submitNewStory = story => (dispatch, getState) => {
-	const authToken = getState().auth.authToken;
 	dispatch(fetchStoryRequest());
+	const authToken = getState().auth.authToken;
 	return ( fetch(`${API_BASE_URL}/stories`,{
 		method: 'POST',
 		body: JSON.stringify(story),
@@ -119,8 +120,8 @@ export const submitNewStory = story => (dispatch, getState) => {
 
 // Async Action to edit a single story
 export const submitEditedStory = story => (dispatch, getState) => {
-	const authToken = getState().auth.authToken;
 	dispatch(fetchStoryRequest());
+	const authToken = getState().auth.authToken;
 	return ( fetch(`${API_BASE_URL}/stories/${story.id}`,{
 		method: 'PUT',
 		body: JSON.stringify(story),

@@ -17,8 +17,8 @@ export class ActionBar extends Component {
 		const submitButton = this.props.loggedIn ? this.renderSubmitButton() : undefined;
 		return(
 			<div className="action-bar">
-				{<Search/>}
-				{<Filter/>}
+				{/*<Search/>*/}
+				{/*<Filter/>*/}
 				{submitButton}
 			</div>
 		);

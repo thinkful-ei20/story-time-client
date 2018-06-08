@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {reduxForm,Field,focus} from 'redux-form';
 import {withRouter} from 'react-router-dom';
 
-import {submitNewStory, submitEditedStory, setStory} from '../actions/stories';
+import {submitNewStory, submitEditedStory, setStory, editStory} from '../actions/stories';
 import {required, nonEmpty} from '../validators';
 
 import './styles/submit-work-form.css';
@@ -24,6 +24,7 @@ export class SubmitWorkForm extends Component {
 				.then( res => {
 					const story = res.story;
 					const updatedStory = Object.assign({},story,{'username':this.props.currentUser.username});
+					this.props.dispatch(editStory(false));
 					this.props.dispatch(setStory(updatedStory));
 					this.props.history.push(`/${story.id}`);
 				});

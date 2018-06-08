@@ -22,3 +22,10 @@ yarn-error.log*
 
 # examples/scratch
 /src/scratch
+
+# tests
+/src/components/__tests__/*.js
+/src/reducers/__tests__/*.js
+/src/actions/__tests__/*.js
+
+

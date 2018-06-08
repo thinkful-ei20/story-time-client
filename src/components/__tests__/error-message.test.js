@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorMessage from '../error-message';
+import {ErrorMessage} from '../error-message';
 import {shallow} from 'enzyme';
 
 describe('<ErrorMessage />', () => {

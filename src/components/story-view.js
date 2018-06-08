@@ -7,7 +7,7 @@ import {fetchStory, editStory} from '../actions/stories';
 
 import './styles/story-view.css';
 
-class StoryView extends Component {
+export class StoryView extends Component {
 
 	componentDidMount() {
 		if(JSON.stringify(this.props.story) === '{}') {
@@ -16,7 +16,7 @@ class StoryView extends Component {
 	}
 
 	onClickEdit() {
-		this.props.dispatch(editStory());
+		this.props.dispatch(editStory(true));
 		this.props.history.push('/submit');
 	}
 

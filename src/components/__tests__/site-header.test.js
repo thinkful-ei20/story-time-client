@@ -1,5 +1,5 @@
 import React from 'react';
-import SiteHeader from '../site-header';
+import {SiteHeader} from '../site-header';
 import {shallow} from 'enzyme';
 
 describe('<SiteHeader />', () => {

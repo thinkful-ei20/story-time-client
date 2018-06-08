@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+//import {connect} from 'react-redux';
 
 import './styles/comment-card.css';
 
@@ -11,4 +11,5 @@ export class CommentCard extends Component {
 	}
 }
 
-export default connect()(CommentCard);
+// export default connect()(CommentCar);
+export default CommentCard;

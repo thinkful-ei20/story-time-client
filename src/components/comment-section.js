@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+//import {connect} from 'react-redux';
 
 import CommentCard from './comment-card';
 
@@ -19,4 +19,5 @@ export class CommentSection extends Component {
 	}
 }
 
-export default connect()(CommentSection);
+// export default connect()(CommentSection);
+export default CommentSection;

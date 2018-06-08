@@ -1,5 +1,5 @@
 import React from 'react';
-import StoryView from '../story-view';
+import {StoryView} from '../story-view';
 import {shallow} from 'enzyme';
 
 describe('<StoryView />', () => {

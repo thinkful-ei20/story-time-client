@@ -3,7 +3,6 @@ import React from 'react';
 import './styles/error-message.css';
 
 export function ErroMessage(props) {
-	console.log(props.error);
 	return(
 		<div className="error-message">
 			<p>

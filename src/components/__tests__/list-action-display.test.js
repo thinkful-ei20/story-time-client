@@ -1,5 +1,5 @@
 import React from 'react';
-import ListActionDisplay from '../list-action-display';
+import {ListActionDisplay} from '../list-action-display';
 import {shallow} from 'enzyme';
 
 describe('<ListActionDisplay />', () => {
