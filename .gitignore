@@ -24,8 +24,8 @@ yarn-error.log*
 /src/scratch
 
 # tests
-/src/components/__tests__/*.js
-/src/reducers/__tests__/*.js
-/src/actions/__tests__/*.js
+/src/components/__tests__
+/src/reducers/__tests__
+/src/actions/__tests__
 
 
