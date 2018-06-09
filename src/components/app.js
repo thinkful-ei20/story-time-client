@@ -21,9 +21,9 @@ export class App extends Component {
 				<Switch>
 					<Route exact path="/" component={Home}/>
 					<AuthRoute exact path="/submit" component={SubmitWorkForm} loggedIn={this.props.loggedIn}/>
-					<Route path="/about" component={About}/>
+					<Route exact path="/about" component={About}/>
+					<Route exact path="/register" component={RegistrationPage}/>
 					<Route path="/:id" component={StoryView}/>
-					<Route path="/register" component={RegistrationPage}/>
 					<Route render={() => DoesNotExist()}/>
 				</Switch>
 			</div>

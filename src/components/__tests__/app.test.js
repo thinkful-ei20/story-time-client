@@ -49,7 +49,8 @@ describe('<App />', () => {
 			return mount(
 				<Provider store={store}>
 					<App/>
-				</Provider>);
+				</Provider>
+			);
 		};
 
 		it( 'Should render the <Home/> component on path "/"', () => {

@@ -12,18 +12,44 @@
 
 .login-form > fieldset {
 	display: inline-block;
+	margin: 0;
+	border-radius: 3px;
+}
+
+.login-label {
+	width: 0;
+	height: 0;
+	position: relative;
+}
+
+.button-holder {
+	text-transform: uppercase;
+	text-align: center;
 }
 
 .login-in-btn {
-	border: 1px, solid, black;
+	text-transform: uppercase;
 	margin: 0.25em;
 }
 
 a {
-	border: 1px, solid, black;
 	padding: 0.5em;
 }
 
-.login-form-error {
-	
+input {
+	padding: 0.4em;
 }
+
+.form-error-container {
+	position: relative;
+	width: 0;
+	height: 0;
+}
+
+.login-form > .form-error {
+	position: absolute;
+	top: -1.50em;
+	left: 10.5em;
+}
+
+

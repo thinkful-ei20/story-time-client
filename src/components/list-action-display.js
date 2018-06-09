@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-//import ActionBar from './action-bar';
+import ActionBar from './action-bar';
 import StoryList from './story-list';
 import StoryView from './story-view';
 
@@ -20,7 +20,7 @@ export class ListActionDisplay extends Component {
 				<h2 className="action-display-header">
 					Browse The Short Stories
 				</h2>
-				{/*<ActionBar/>*/}
+				<ActionBar/>
 				<div className="action-display-controller">
 					<StoryList/>
 				</div>

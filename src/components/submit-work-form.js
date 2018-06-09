@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {reduxForm,Field,focus} from 'redux-form';
+import {reduxForm,Field} from 'redux-form';
 import {withRouter} from 'react-router-dom';
 
 import {submitNewStory, submitEditedStory, setStory, editStory} from '../actions/stories';
@@ -47,8 +47,9 @@ export class SubmitWorkForm extends Component {
 				className="submit-work-form"
 				onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				<fieldset className="title-fldst">
-					<label htmlFor="title">title</label>
-					<Field 
+					<label htmlFor="title" className="submit-form-label">title</label >
+					<Field
+						className="submit-form-input"
 						component="input"
 						type="text"
 						id="title"
@@ -57,7 +58,7 @@ export class SubmitWorkForm extends Component {
 						validate={[required, nonEmpty]}
 					/>
 				</fieldset>
-				<fieldset className="genre-fldst">
+				{/* <fieldset className="genre-fldst">
 					<label htmlFor="genre">genre</label>
 					<Field 
 						name="genre"
@@ -72,9 +73,9 @@ export class SubmitWorkForm extends Component {
 						<option value="mystery">mystery</option>
 						<option value="fantasy">fantasy</option>
 					</Field>
-				</fieldset>
+				</fieldset> */}
 				<fieldset className="text-fldst">
-					<label htmlFor="storytext">text</label>
+					<label htmlFor="storytext" className="submit-form-label">story</label>
 					<Field
 						placeholder='Story Goes Here!'
 						component="textarea"
@@ -92,7 +93,9 @@ export class SubmitWorkForm extends Component {
 						aria-haspopup="true"
 					/>
 				</fieldset>
-				<button className="submit-btn" type="submit" disabled={this.props.pristine || this.props.submitting}>Submit Story</button>
+				<div className="button-holder">
+					<button className="submit-btn" type="submit" disabled={this.props.pristine || this.props.submitting}>Submit Story</button>
+				</div>
 			</form>
 		);
 	}

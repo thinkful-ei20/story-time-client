@@ -11,16 +11,18 @@ export class SiteHeader extends Component {
 		const HeaderComponent = this.props.loggedIn ? <Profile/> : <LoginForm/> ;
 		return(
 			<header>
-				<div className="left-header">
-					<div className="left-header-left">
-						<h1>StoryTime</h1>
+				<div className="header-container">
+					<div className="left-header">
+						<div className="left-header-left">
+							<h1>Storytime</h1>
+						</div>
+						<div className="left-header-right">
+							<NavigationBar/>
+						</div>
 					</div>
-					<div className="left-header-right">
-						<NavigationBar/>
+					<div className="right-header">
+						{HeaderComponent}
 					</div>
-				</div>
-				<div className="right-header">
-					{HeaderComponent}
 				</div>
 			</header>
 		);

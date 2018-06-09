@@ -28,7 +28,7 @@ export class LoginForm extends Component {
 				{error}
 				<Field className="login-form-input" component={Input} type="text" name="username" id="username" placeholder="username" aria-label="username" validate={[required, nonEmpty]}/>
 				<Field className="login-form-input" component={Input} type="password" name="password" id="password" placeholder="password" aria-label="password" validate={[required, nonEmpty]}/>
-				<button className="login-in-btn" disabled={this.props.pristine || this.props.submitting}>log in</button>
+				<div className="button-holder"><button className="login-in-btn" disabled={this.props.pristine || this.props.submitting}>log in</button></div>
 				<Link className="sing-up" to="/register">sign up</Link>
 			</form>
 		);

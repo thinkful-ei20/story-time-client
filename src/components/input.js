@@ -15,22 +15,16 @@ export class Input extends React.Component {
 
 		let error;
 		if (this.props.meta.touched && this.props.meta.error) {
-			error = <div className="form-error">{this.props.meta.error}</div>;
-		}
-
-		let warning;
-		if (this.props.meta.touched && this.props.meta.warning) {
-			warning = (
-				<div className="form-warning">{this.props.meta.warning}</div>
-			);
+			error =(
+				<div className="form-error-container" aria-live="polite">
+					<span className="form-error">{this.props.meta.error}</span>
+				</div>);
 		}
 
 		return (
 			<fieldset>
 				<label htmlFor={this.props.input.name}>
 					{this.props.label}
-					{error}
-					{warning}
 				</label>
 				<Element
 					{...this.props.input}
@@ -41,6 +35,7 @@ export class Input extends React.Component {
 					ref={input => (this.input = input)}
 				/>
 				{this.props.children}
+				{error}
 			</fieldset>
 		);
 	}

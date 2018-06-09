@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Search from './search';
-import Filter from './filter';
-
 import './styles/action-bar.css';
 
 export class ActionBar extends Component {
@@ -17,8 +14,6 @@ export class ActionBar extends Component {
 		const submitButton = this.props.loggedIn ? this.renderSubmitButton() : undefined;
 		return(
 			<div className="action-bar">
-				{/*<Search/>*/}
-				{/*<Filter/>*/}
 				{submitButton}
 			</div>
 		);

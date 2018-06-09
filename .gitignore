@@ -23,9 +23,7 @@ yarn-error.log*
 # examples/scratch
 /src/scratch
 
-# tests
-/src/components/__tests__
-/src/reducers/__tests__
-/src/actions/__tests__
+# build
+/build
 
 

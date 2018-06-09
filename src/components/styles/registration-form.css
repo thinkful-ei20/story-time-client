@@ -1,7 +1,36 @@
-.registraton-form{
 
+
+.registration-form > fieldset {
+	display: block;
+	margin: 0;
+	border-radius: 3px;
 }
 
-.registration-form-input {
-	
+.registration-btn {
+	text-transform: uppercase;
+	margin: 0.25em;
+}
+
+.button-holder {
+	text-align: center;
+}
+
+a {
+	padding: 0.5em;
+}
+
+input {
+	padding: 0.4em;
+}
+
+.form-error-container {
+	position: relative;
+	width: 0;
+	height: 0;
+}
+
+.registration-form > .form-error {
+	position: absolute;
+	top: -1.50em;
+	left: 2em;
 }

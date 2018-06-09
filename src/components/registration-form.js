@@ -25,37 +25,27 @@ export class RegistrationForm extends React.Component {
 	}
 
 	render() {
-
-		let error;
-
-		if(this.props.error) {
-
-			error = (
-				<div className="registration-form-error" aria-live="polite">
-					{this.props.error}
-				</div>
-			);
-
-		}
-
 		return (
 			<form
 				className="registration-form"
 				onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				<label htmlFor="firstName">First name</label>
-				<Field 
+				<Field
+					className="registration-form-input"
 					component={Input}
 					type="text"
 					name="firstName"
 				/>
 				<label htmlFor="lastName">Last name</label>
-				<Field 
+				<Field
+					className="registration-form-input"
 					component={Input}
 					type="text"
 					name="lastName" 
 				/>
 				<label htmlFor="username">Username</label>
 				<Field
+					className="registration-form-input"
 					component={Input}
 					type="text"
 					name="username"
@@ -63,6 +53,7 @@ export class RegistrationForm extends React.Component {
 				/>
 				<label htmlFor="password">Password</label>
 				<Field
+					className="registration-form-input"
 					component={Input}
 					type="password"
 					name="password"
@@ -70,16 +61,20 @@ export class RegistrationForm extends React.Component {
 				/>
 				<label htmlFor="passwordConfirm">Confirm password</label>
 				<Field
+					className="registration-form-input"
 					component={Input}
 					type="password"
 					name="passwordConfirm"
 					validate={[required, nonEmpty, matchesPassword]}
 				/>
-				<button
-					type="submit"
-					disabled={this.props.pristine || this.props.submitting}>
-                    Register
-				</button>
+				<div className="button-holder">
+					<button
+						type="submit"
+						className="registration-btn"
+						disabled={this.props.pristine || this.props.submitting}>
+						Register
+					</button>
+				</div>
 			</form>
 		);
 	}

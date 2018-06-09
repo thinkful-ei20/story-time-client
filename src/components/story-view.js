@@ -30,7 +30,7 @@ export class StoryView extends Component {
 			);
 		}
 
-		const edit = this.props.isOwner ? <button className="edit-btn" onClick={() => this.onClickEdit()}>Edit</button> : undefined;
+		const edit = this.props.isOwner ? <div className="button-holder"><button className="edit-btn" onClick={() => this.onClickEdit()}>Edit</button></div> : undefined;
 
 		return(
 			<div className="story-view-container">

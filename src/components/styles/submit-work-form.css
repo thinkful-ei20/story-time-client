@@ -6,6 +6,15 @@
 	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
 	flex-direction: column;
+	background-color:  #EDF5E1;
+	border-radius: 3px;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
+.submit-form-label {
+	text-transform: capitalize;
+	margin-right: 0.5em;
 }
 
 .title-fldst{
@@ -17,13 +26,22 @@
 }
 
 .text-fldst{
-	position: relative;
-	left: -0.35em;
 	order:3;
+	height: 60vh;
+	margin-bottom: 0;
+}
+
+
+.button-holder {
+	order:4;
+	padding-top: 2.0em;
+	padding-bottom: 1.0em;
+	text-align: center;
 }
 
 .submit-btn{
-	order:4;
+	text-transform: uppercase;
+	margin: 0.25em;
 }
 
 textarea {

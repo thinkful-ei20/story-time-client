@@ -14,10 +14,12 @@ export function RegistrationPage(props) {
 		return <Redirect to="/" />;
 	}
 	return (
-		<div className="registration">
-			<h2>Register</h2>
-			<RegistrationForm/>
-		</div>
+		<section className="registration">
+			<div className="registration-container">
+				<h2>Register</h2>
+				<RegistrationForm/>
+			</div>
+		</section>
 	);
 }
 

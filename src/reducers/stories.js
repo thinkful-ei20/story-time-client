@@ -9,7 +9,6 @@ import {
 	UPDATE_STORY,
 	EDIT_STORY,
 	SEARCH_STORY,
-	READ_STORY
 } from '../actions/action-types';
 
 const initialState = {
