@@ -47,23 +47,23 @@ Entry point for the application is server.js, and configuration in config.js
 
 ### DashBoard
 
-![home view](/img/home.png)
+![home view](/thinkful-ei20/story-time-client/tree/master/img/home.png)
 
 ### Registration
 
-![register view](/img/register.png)
+![register view](/thinkful-ei20/story-time-client/tree/master/img/register.png)
 
 ### DashBoard - Authorized
 
-![home-auth view](/img/home-auth.png)
+![home-auth view](/thinkful-ei20/story-time-client/tree/master/img/home-auth.png)
 
 ### Story
 
-![story view](/img/story.png)
+![story view](/thinkful-ei20/story-time-client/tree/master/img/story.png)
 
 ### Submit - Authorized
 
-![submit/edit view](/img/submit.png)
+![submit/edit view](/thinkful-ei20/story-time-client/tree/master/img/submit.png)
 
 ## Task List
 
