@@ -1,8 +1,6 @@
 
 # Storytime
 
-============
-
 ## Motivation
 
 Story time is a platform for writers who want to foster their confidence and skills in writing, by sharing their works with a community passionate about story telling.
@@ -49,23 +47,23 @@ Entry point for the application is server.js, and configuration in config.js
 
 ### DashBoard
 
-![home view](./img/home.png)
+![home view](/img/home.png)
 
 ### Registration
 
-![register view](./img/register.png)
+![register view](/img/register.png)
 
 ### DashBoard - Authorized
 
-![home-auth view](./img/home-auth.png)
+![home-auth view](/img/home-auth.png)
 
 ### Story
 
-![story view](./img/story.png)
+![story view](/img/story.png)
 
 ### Submit - Authorized
 
-![submit/edit view](./img/submit.png)
+![submit/edit view](/img/submit.png)
 
 ## Task List
 
