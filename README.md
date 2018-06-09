@@ -47,23 +47,23 @@ Entry point for the application is server.js, and configuration in config.js
 
 ### DashBoard
 
-![home view](blob/master/img/home-auth.PNG)
+![home view](story-time-client/img/home.PNG)
 
 ### Registration
 
-![register view](blob/master/img/home-auth.PNG)
+![register view](story-time-client/img/register.PNG)
 
 ### DashBoard - Authorized
 
-![home-auth view](blob/master/img/home-auth.PNG)
+![home-auth view](story-time-client/img/home-auth.PNG)
 
 ### Story
 
-![story view](blob/master/img/home-auth.PNG)
+![story view](story-time-client/img/story-view.PNG)
 
 ### Submit - Authorized
 
-![submit/edit view](blob/master/img/home-auth.PNG)
+![submit/edit view](story-time-client/img/submit.PNG)
 
 ## Task List
 
